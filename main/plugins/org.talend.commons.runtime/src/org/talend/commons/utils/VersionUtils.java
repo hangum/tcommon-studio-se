@@ -87,16 +87,16 @@ public class VersionUtils {
     }
 
     public static String getInternalVersion() {
-    	if (Platform.inDevelopmentMode()) {
-    		return getVersion();
-    	}
+//    	if (Platform.inDevelopmentMode()) {
+//    		return getVersion();
+//    	}
     	
-        String version = null;
+        String version = "";
         Bundle bundle = FrameworkUtil.getBundle(VersionUtils.class);
         if (bundle != null) {
             version = (String) bundle.getHeaders().get(org.osgi.framework.Constants.BUNDLE_VERSION);
         }
-
+        
         FileInputStream in = null;
         try {
             File eclipseProductFile = getEclipseProductFile();
@@ -120,6 +120,12 @@ public class VersionUtils {
                 }
             }
         }
+        
+        System.out.println("======================================================================================================");
+        System.out.println("last version : " + version);
+        System.out.println("======================================================================================================");
+
+        
         return version;
     }
 

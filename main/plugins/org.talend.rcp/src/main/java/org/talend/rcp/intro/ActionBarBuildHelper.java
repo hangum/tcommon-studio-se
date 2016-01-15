@@ -340,21 +340,21 @@ public class ActionBarBuildHelper implements IActionBarHelper {
         IBrandingService brandingService = (IBrandingService) GlobalServiceRegister.getDefault().getService(
                 IBrandingService.class);
         String[] availableLanguages = brandingService.getBrandingConfiguration().getAvailableLanguages();
-        if (ArrayUtils.contains(availableLanguages, ECodeLanguage.PERL.getName())) {
-            String[] prefsId = { "org.eclipse.team.ui.TeamPreferences" };
-            for (IPreferenceNode node : window.getWorkbench().getPreferenceManager().getRootSubNodes()) {
-                if (ArrayUtils.contains(prefsId, node.getId())) {
-                    prefsToDelete.add(node);
-                }
-            }
-        } else {
-            String[] prefsId = { "org.eclipse.team.ui.TeamPreferences", "org.epic.core.preferences.PerlMainPreferencePage" };
-            for (IPreferenceNode node : window.getWorkbench().getPreferenceManager().getRootSubNodes()) {
-                if (ArrayUtils.contains(prefsId, node.getId())) {
-                    prefsToDelete.add(node);
-                }
-            }
-        }
+//        if (ArrayUtils.contains(availableLanguages, ECodeLanguage.PERL.getName())) {
+//            String[] prefsId = { "org.eclipse.team.ui.TeamPreferences" };
+//            for (IPreferenceNode node : window.getWorkbench().getPreferenceManager().getRootSubNodes()) {
+//                if (ArrayUtils.contains(prefsId, node.getId())) {
+//                    prefsToDelete.add(node);
+//                }
+//            }
+//        } else {
+//            String[] prefsId = { "org.eclipse.team.ui.TeamPreferences", "org.epic.core.preferences.PerlMainPreferencePage" };
+//            for (IPreferenceNode node : window.getWorkbench().getPreferenceManager().getRootSubNodes()) {
+//                if (ArrayUtils.contains(prefsId, node.getId())) {
+//                    prefsToDelete.add(node);
+//                }
+//            }
+//        }
 
         for (IPreferenceNode node : prefsToDelete) {
             window.getWorkbench().getPreferenceManager().remove(node);
